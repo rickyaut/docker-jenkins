@@ -20,7 +20,7 @@ jobs:
         git checkout feature/enable-insecure-https-host
         mvn clean package install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -Dmaven.source.skip=true -Dbaseline.skip=true
         cd ..
-    -name: build jackrabbit-filevault
+    - name: build jackrabbit-filevault
       run: |
         git clone https://github.com/aem-design/jackrabbit-filevault.git
         cd jackrabbit-filevault
