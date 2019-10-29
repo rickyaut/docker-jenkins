@@ -34,8 +34,9 @@ jobs:
         sudo apt-get -y install libxml2-utils
         export JENKINS_VERSION=$(wget -q -O - http://mirrors.jenkins.io/war-stable/ | xmllint --html --xpath "//table/tr[position() = (last() - 2)]/td[2]/a/text()" - | sed -e 's/[^0-9\.]//g')
         export RELEASE_DATE=$(wget -q -O - http://mirrors.jenkins.io/war-stable/ | xmllint --html --xpath "//table/tr[position() = (last() - 2)]/td[3]/text()" - | sed -n 's/\([0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\).*/\1/p')
+        echo $IMAGE:$IMAGE_VERSION $JENKINS_VERSION
     - name: Build Jeknins docker image
       run: |
-        echo $IMAGE:$IMAGE_VERSION  $JENKINS_VERSION
+        echo $IMAGE:$IMAGE_VERSION $JENKINS_VERSION
         docker build --pull -t $IMAGE:$IMAGE_VERSION --build-arg JENKINS_VERSION=$JENKINS_VERSION .
         echo test, and deploy your project.
