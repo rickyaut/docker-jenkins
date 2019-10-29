@@ -43,5 +43,5 @@ jobs:
     - name: Build Jeknins docker image
       run: |
         echo ${env:IMAGE}:${env:IMAGE_VERSION} ${env:JENKINS_VERSION}
-        docker build --pull -t $IMAGE:$IMAGE_VERSION --build-arg JENKINS_VERSION=$JENKINS_VERSION .
+#        docker build --pull -t $IMAGE:$IMAGE_VERSION --build-arg JENKINS_VERSION=$JENKINS_VERSION .
         echo test, and deploy your project.
