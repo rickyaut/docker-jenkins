@@ -1,4 +1,4 @@
-FROM        aemdesign/jenkins-base:latest
+FROM jenkins/jenkins:lts
 
 MAINTAINER  devops <devops@aem.design>
 
@@ -27,12 +27,12 @@ ENV JENKINS_SLAVE_COUNT=2 \
 
 USER root
 
+COPY plugins_extra.txt /usr/share/jenkins/ref/plugins_extra.txt
+ENV JENKINS_HOME /var/jenkins_home
 ENV CASC_JENKINS_CONFIG /var/jenkins_conf
 
-#RUN xargs /usr/local/bin/plugins.sh /usr/share/$JENKINS_USER/plugins.txt
+ARG JAVA_OPTS
+ENV JAVA_OPTS "-Djenkins.install.runSetupWizard=false ${JAVA_OPTS:-}"
 
-
-EXPOSE 22
-
-USER $JENKINS_USER
+RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins_extra.txt
 
