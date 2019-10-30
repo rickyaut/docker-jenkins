@@ -11,6 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: set environment variables
       run: |
+        echo ::set-env name=ORGANISATION_NAME::aemdesign
         source <(curl -sL https://github.com/aem-design/aemdesign-docker/releases/latest/download/github_get_config.sh)
         source <(curl -sL https://github.com/aem-design/aemdesign-docker/releases/latest/download/github_get_version.sh)
     - name: build jackrabbit
