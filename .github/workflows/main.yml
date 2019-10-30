@@ -18,14 +18,14 @@ jobs:
         git clone https://github.com/aem-design/jackrabbit.git
         cd jackrabbit
         git checkout feature/enable-insecure-https-host
-        mvn clean package install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -Dmaven.source.skip=true -Dbaseline.skip=true
+#        mvn clean package install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -Dmaven.source.skip=true -Dbaseline.skip=true
         cd ..
     - name: build jackrabbit-filevault
       run: |
         git clone https://github.com/aem-design/jackrabbit-filevault.git
         cd jackrabbit-filevault
         git checkout feature/enable-insecure-https-host
-        mvn clean package -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -Dmaven.source.skip=true -Dbaseline.skip=true
+#        mvn clean package -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -Dmaven.source.skip=true -Dbaseline.skip=true
         cd vault-cli/target
         unzip vault-cli-3.4.1-SNAPSHOT-bin.zip
         cd ../../..
